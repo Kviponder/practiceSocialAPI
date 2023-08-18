@@ -43,7 +43,7 @@ To get started with PracticeSocialAPI, follow the installation instructions outl
 
 ## Contributing
 
-PracticeSocialAPI welcomes contributions from the community. If you find bugs or have ideas for enhancements, please follow the [Contributing Guidelines](CONTRIBUTING.md).
+PracticeSocialAPI welcomes contributions from the community. If you find bugs or have ideas for enhancements, please reach out!
 
 ## License
 
