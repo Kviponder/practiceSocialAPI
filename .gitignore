@@ -1,0 +1,7 @@
+/node_modules
+
+/Client/node_modules
+/CLient/package-lock.json
+
+/Server/node_modules
+/Server/package-lock.json

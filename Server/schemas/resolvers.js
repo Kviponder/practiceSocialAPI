@@ -21,18 +21,18 @@ const resolvers = {
         users: async () => {
             const userData = await User.find()
                 .select("-__v -password")
-                .populate("posts")
-                .populate("comments")
-                .populate("likes");
+                // .populate("posts")
+                // .populate("comments")
+                // .populate("likes");
             return userData;
         },
         user: async (parent, { username }) => {
             const params = username ? { username } : {};
             const userData = await User.findOne({ params })
                 .select("-__v -password")
-                .populate("posts")
-                .populate("comments")
-                .populate("likes");
+                // .populate("posts")
+                // .populate("comments")
+                // .populate("likes");
             return userData;
     },
         posts: async () => {
@@ -106,14 +106,13 @@ const resolvers = {
             const { comment } = args;
         },
         addLike: async (parent, args, context) => {},
-        editUser: async (parent, args, context) => {},
         editPost: async (parent, args, context) => {},
         editComment: async (parent, args, context) => {},
 
-        removeUser: async (parent, args, context) => {},
-        removePost: async (parent, args, context) => {},
-        removeComment: async (parent, args, context) => {},
-        removeLike: async (parent, args, context) => {},
+        deleteUser: async (parent, args, context) => {},
+        deletePost: async (parent, args, context) => {},
+        deleteComment: async (parent, args, context) => {},
+        deleteLike: async (parent, args, context) => {},
 
        
     },
