@@ -7,6 +7,11 @@ const PostSchema = new Schema(
       required: true,
       trim: true,
     },
+    image: {
+      type: String, // URL
+      required: false,
+      trim: true,
+    },
     body: {
       type: String,
       required: true,
