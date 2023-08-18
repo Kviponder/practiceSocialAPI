@@ -63,7 +63,6 @@ const typeDefs = gql`
 
         editPost(_id: ID!, title: String!, image: String, body: String!, tags: [String]): Post
         editComment(_id: ID!, comment: String!): Comment
-        editLike(_id: ID!, likes: Int!, dislikes: Int!): Likes
 
         deletePost(_id: ID!): Post
         deleteComment(_id: ID!): Comment
