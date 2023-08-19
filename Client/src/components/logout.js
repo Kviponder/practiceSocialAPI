@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from 'react-bootstrap';
+// import { Button } from 'react-bootstrap';
 import Auth from '../utils/auth';
 import '../styles.css'; // Import the styles.css file
 
@@ -9,10 +9,7 @@ const Logout = () => {
     window.location.replace('/'); // Redirect the user to the homepage or login page
   };
 
-  return (
-    <Button variant="gold" className="logout-button buttons" onClick={handleLogout}>
-      Logout
-    </Button>
+  return ( 'hi'
   );
 };
 

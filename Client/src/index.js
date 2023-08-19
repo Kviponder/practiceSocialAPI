@@ -6,7 +6,6 @@ import {
   ApolloProvider,
   createHttpLink,
 } from '@apollo/client';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import App from './App';
 import { setContext } from '@apollo/client/link/context';
 

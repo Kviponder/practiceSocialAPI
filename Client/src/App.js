@@ -14,19 +14,9 @@ import './styles.css';
 
 function App() {
   return (
-    <ApolloProvider client={client}>
-      <ThemeProvider prefixes={{ btn: 'custom-btn' }}>
         <Router>
-          <Navbar />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/snippets" element={<SnippetList />} />
-            <Route path="/signup" element={<SignupForm />} />
-            <Route path="/login" element={<LoginForm />} />
-          </Routes>
+          <Home />
         </Router>
-      </ThemeProvider>
-    </ApolloProvider>
   );
 }
 
