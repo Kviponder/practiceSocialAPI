@@ -73,14 +73,14 @@ const resolvers = {
     addPost: async (parent, args, context) => {
       const { title, image, body, tags } = args;
       const { user } = context;
-      if (!user) {
-        throw new AuthenticationError("You need to be logged in!");
-      }
-      if (!title || !body) {
-        throw new AuthenticationError(
-          "You need to fill out all required fields"
-        );
-      }
+      // if (!user) {
+      //   throw new AuthenticationError("You need to be logged in!");
+      // }
+      // if (!title || !body) {
+      //   throw new AuthenticationError(
+      //     "You need to fill out all required fields"
+      //   );
+      // }
       try {
         args.user = user._id;
         const post = new Post(args);
