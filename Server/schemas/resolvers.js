@@ -76,17 +76,23 @@ const resolvers = {
       // if (!user) {
       //   throw new AuthenticationError("You need to be logged in!");
       // }
-      // if (!title || !body) {
-      //   throw new AuthenticationError(
-      //     "You need to fill out all required fields"
-      //   );
-      // }
+      if (user) {
+        //Testing
+        throw new AuthenticationError("You need to be logged in!");
+      }
+      if (!title || !body) {
+        throw new AuthenticationError(
+          "You need to fill out all required fields"
+        );
+      }
       try {
-        args.user = user._id;
+        // args.user = user._id;
+        args.user = "64df0861c74bf80d689b1b2e"; //Testing
+
         const post = new Post(args);
         const newPost = await post.save();
         await User.findByIdAndUpdate(
-          { _id: user._id },
+          { _id: "64df0861c74bf80d689b1b2e" },
           { $push: { posts: newPost._id } },
           { new: true }
         );
@@ -107,7 +113,7 @@ const resolvers = {
         );
       }
       try {
-        args.user = context.user._id;
+        // args.user = context.user._id;
         const comment = new Comment(args);
         const newComment = await comment.save();
       } catch (err) {
@@ -116,20 +122,33 @@ const resolvers = {
       }
     },
     addLike: async (parent, args, context) => {
-      if (!context.user) {
-        throw new AuthenticationError("You need to be logged in!");
+      // if (!context.user) {
+      //   throw new AuthenticationError("You need to be logged in!");
+      // }
+      try {
+        const like = new Likes(args);
+        const newLike = await like.save();
+        await User.findByIdAndUpdate(
+          { _id: context.user._id },
+          { $push: { likes: newLike._id } },
+          { new: true }
+        );
+        return newLike;
+      } catch (err) {
+        console.log(err);
+        throw new Error("Something went wrong.");
       }
     },
     editPost: async (parent, args, context) => {
       const { title, image, body, tags } = args;
-      if (!context.user) {
-        throw new AuthenticationError("You need to be logged in!");
-      }
-      if (!title || !body) {
-        throw new AuthenticationError(
-          "You need to fill out all required fields"
-        );
-      }
+      // if (!context.user) {
+      //   throw new AuthenticationError("You need to be logged in!");
+      // }
+      // if (!title || !body) {
+      //   throw new AuthenticationError(
+      //     "You need to fill out all required fields"
+      //   );
+      // }
       const updatedPost = await Post.findByIdAndUpdate(
         { _id: args._id },
         { title, image, body, tags },
@@ -143,14 +162,14 @@ const resolvers = {
 
     editComment: async (parent, args, context) => {
       const { comment } = args;
-      if (!context.user) {
-        throw new AuthenticationError("You need to be logged in!");
-      }
-      if (!comment) {
-        throw new AuthenticationError(
-          "You need to fill out all required fields"
-        );
-      }
+      // if (!context.user) {
+      //   throw new AuthenticationError("You need to be logged in!");
+      // }
+      // if (!comment) {
+      //   throw new AuthenticationError(
+      //     "You need to fill out all required fields"
+      //   );
+      // }
       const updatedComment = await Comment.findByIdAndUpdate(
         { _id: args._id },
         { comment },
@@ -163,9 +182,9 @@ const resolvers = {
     },
 
     deleteUser: async (parent, args, context) => {
-      if (!context.user) {
-        throw new AuthenticationError("You need to be logged in!");
-      }
+      // if (!context.user) {
+      //   throw new AuthenticationError("You need to be logged in!");
+      // }
       try {
         const deletedUser = await User.findByIdAndDelete({
           _id: context.user._id,
